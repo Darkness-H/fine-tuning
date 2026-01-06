@@ -83,6 +83,14 @@ docker run -d --name chroma \
 - `LoRA model evaluation.ipynb`
 - `Q LoRA model evaluation.ipynb`
 
+The weights of the trained models are stored on Google Drive at this [link](https://drive.google.com/drive/folders/1jJurVfmvWeKieJvXN0lmPV9bZb_LYBgH).
+
+For the quantized models, we provide three versions based on different fine-tuning configurations:
+
+* **`fine-tuned_FP16-INT4`**: Obtained by fine-tuning on 100 samples for 2 epochs.
+* **`fine-tuned_FP16-INT4_v2`**: Obtained by fine-tuning on 500 samples for 2 epochs.
+* **`fine-tuned_FP16-INT4_v3`**: Obtained by fine-tuning on 500 samples for 10 epochs.
+
 > Follow this order so that data flows correctly from ingestion to exploitation while maintaining the layered structure.
 
 ## Notes
