@@ -29,7 +29,7 @@ docker run -d --name minio \
   -v C:\minio\data:/data \
   minio/minio server /data --console-address ":9001"
 ```
-- Access the Web UI at [http://127.0.0.1:9001](http://127.0.0.1:9001)
+- After the container has been initialized, the MinIO Web UI can be accessed at [http://127.0.0.1:9001](http://127.0.0.1:9001) Furthermore, starting from the **Persistent_Landing** stage, the data were organized into three subfolders, texts,images, and videos, each corresponding to the different data formats we used. Here, we also created a volume on the local machine. Since MinIO's storage is limited, we could previously store only a few files there.
 
 #### ChromaDB
 ```bash
@@ -39,7 +39,7 @@ docker run -d --name chroma \
   -v C:\chromadb\exploitation-zone:/chroma/chroma \
   chromadb/chroma:latest
 ```
-- Although we set a path for ChoromaDB to persistently store embeddings here. It seems like ChromaDB actually stores the embeddings inside the container
+- In this configuration, we explicitly define a persistent storage path for ChromaDB to store its embeddings outside the container. However, during experimentation, it was observed that ChromaDB tends to store the embeddings internally within the container, regardless of the external volume path. This behavior may vary depending on the ChromaDB version and container configuration of the device.
 
 ---
 
@@ -66,7 +66,22 @@ docker run -d --name chroma \
 - `exploitation_zone_text_image_embeddings.ipynb`
 
 ### Training Data Construction Zone
-- `training_data_generation.ipynb`
+- `baseline training data generation.ipynb`
+- `image augmented training data generation.ipynb`
+- `text augmented training data generation.ipynb`
+- `text image augmented training data generation.ipynb`
+
+### Training Zone
+- `training zone.ipynb`
+- `training FP16-INT4.ipynb`
+- `training LoRA.ipynb`
+- `training FP16-INT4-LoRA.ipynb`
+
+### Test Zone
+- `test data preparation.ipynb`
+- `Quantized model evaluation.ipynb`
+- `LoRA model evaluation.ipynb`
+- `Q LoRA model evaluation.ipynb`
 
 > Follow this order so that data flows correctly from ingestion to exploitation while maintaining the layered structure.
 
